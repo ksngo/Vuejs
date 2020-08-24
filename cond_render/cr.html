@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    
+    <div id="app">
+        <p v-if="trueOrFalse"> Show this if true </p>
+        <p v-else> Show this if false</p>
+    </div>
+
+    <div id="app2">
+        <template v-if="Math.random() > 0.5">
+            <h1> app2 </h1>
+            <h2> app2 </h2>
+            <h3> app2 </h3>
+        </template>
+        <template v-else>
+            <h1> v-else </h1>
+        </template>
+    </div>
+
+    <div id="app3">
+        <p v-if="type === 'A' "> A</p>
+        <p v-else-if="type === 'B' "> B</p>
+        <p v-else-if="type === 'C' "> C</p>
+        <p v-else> Not A, B or C</p>
+    </div>
+
+    <div id="app4">
+        <template v-if="loginType == 'username'">
+            <label> Username </label>
+            <input placeholder = "username">
+        </template>
+        <template v-else>
+            <label> Email </label>
+            <input placeholder = "email">
+        </template>
+        <button v-on:click="toggle"> Toggle login type </button>
+    </div>
+
+    <script src="cr.js"></script>
+</body>
+</html>

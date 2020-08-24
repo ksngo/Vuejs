@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        #my_id1{
+            color: red;
+        }
+
+        #my_id2{
+            color: blue;
+        }
+
+        .my_class{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p> {{foo}}</p>
+        <button v-on:click="foo = 'genius'" > change it</button>
+    </div>
+
+    <!-- -----------instance lifecycle hook  -->
+    <div id="app2">
+        <p> {{a}}</p>
+        <p> {{b}} </p>
+        <div v-for="element in c">
+            {{element.number}}
+        </div>
+        <ol>
+            <li> {{d.text1}}</li>
+            <li> {{d.text2}}</li>
+        </ol>
+    </div>
+
+    <!-- -------------------Interpolations(raw html) -->
+    <div id="app3">
+        <p> {{rawhtml}}</p>
+        <p v-html="rawhtml"></p> 
+        
+
+    </div>
+
+    <!------------------------Interpolations(attribute)-->
+    <div id="app4">
+        <div v-bind:id="dynamicId">Interpolations(attribute)</div>
+    </div>
+
+    <!---------------------Interpolations(using javascript expression-->
+    
+    
+    <div id="app5">
+        <p> {{number +1}}</p>
+        <p> {{ok? "yes" :  "no"}}</p>
+        <p> {{ message.split('') }}</p>
+        <p> {{ message.split('').reverse() }}</p>
+        <p> {{ message.split('').reverse().join('') }}</p>
+    </div>
+
+    <!----------------------directive (v-)-->
+
+    <div id="app6">
+        <p v-if="appear">Appeared</p>
+    
+
+    <!------directive(v-) taking argument denoted by colon(:)-->
+        <a v-bind:href="url">Google</a>
+        <button v-on:click="change">click Me</button>
+    
+
+    <!-------directive(v-) dynamic argument -->
+        <a v-bind:[attribute_name]="url">Google</a>
+        
+        
+        
+    </div>
+
+    <!-----------directive Shorthands v-bind: and v-on: -->
+
+    <div id="app7">
+        <a v-bind:href="url"> Youtube </a>
+        <a :href="url"> Youtube </a>
+        <button v-on:click="doSomething"> color </button>
+        <button @click="doSomething"> color </button>
+
+
+    </div>
+
+    <script  src="../js/index1.js"></script>
+</body>
+</html>
+

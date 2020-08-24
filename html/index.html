@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1> Hello World</h1>
+
+    <!-- bind data to text -->
+    <div id="app"> 
+        {{message}}
+    </div>
+
+    <!-- bind data to attributes -->
+    <div id="app-2">
+        <span v-bind:title="message">
+            Hover over me!
+        </span>
+    </div>
+
+    <!-- bind data to structure -->
+    <div id="app-3">
+        <span v-if="seen">
+            Now you see me
+        </span>
+    </div>
+
+    <!-- conditionals and loops -->
+    <div id="app-4">
+        <ol>
+            <li v-for="element in todos">
+                {{element.text}}
+            </li>
+        </ol>
+    </div>
+
+    <!-- v-on directives -->
+    <div id="app-5">
+        <p> {{message}}</p>
+        <button v-on:click="reverseMessage">Button</button>
+    </div>
+
+    <!-- v-model directive -->
+    <div id="app-6">
+        <p> {{message}}</p>
+        <input v-model="message">
+        <input type="submit" value="hello"/>
+    </div>
+
+    <!-- Vue.component-->
+    <div id="app-7">
+        <ol>
+            <vue-component></vue-component>
+        </ol>
+    </div>
+
+    <!-- Vue.component example 2-->
+    <!-- v-bind directive -->
+
+    <div id="app-8">
+        <ol>
+            <vue-component-ex2
+                v-for="element in my_list"
+                v-bind:prop = "element"
+                v-bind:key = "element.id"
+            >
+
+            </vue-component-ex2>
+        </ol>
+    </div>
+    <script src="../js/index.js"></script>
+</body>
+</html>

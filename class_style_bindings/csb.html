@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="csb.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+    
+</head>
+<body>
+    
+    <!-- Binding HTML classes -->
+        <!--object syntax-->
+    <div id="app">
+        <p v-bind:class="{active : isActive}">Object inline </p>
+    </div>
+
+    <div id="app2">
+        <p v-bind:class="classObject">Object not inline </p>
+    </div>
+
+    <div id="app3">
+        <p v-bind:class="classObject">bind to computed object</p>
+    </div>
+
+        <!--array syntax-->
+
+      <div id="app4">
+        <p v-bind:class="[activeClass, errorClass]"> {{activeClass}} {{errorClass}}</p>
+                <!--ternary operator in list-->
+        <p v-bind:class="[ isActive ?activeClass :errorClass]">{{activeClass}} {{errorClass}} </p>
+                <!-- object syntax in array syntax -->
+        <p v-bind:class="[{active:isActive}, errorClass ]">{{activeClass}} {{errorClass}} </p>
+    </div>
+
+        <!--Vue Components-->
+        <!-- comebackagain -->
+
+    <!-- Binding inline styles-->
+
+    <div id="app5">
+    <p v-bind:style="myStyle"> Binding INline styles</p>
+    <p style="color:purple; background-color:aqua; font-size:25px;">Binding inline styles</p>
+    <p v-bind:style="{color: mycolor, 'background-color' : mybgcolor}"> Binding inline styles</p>
+    <p v-bind:style="myStyleObject"> Binding inline styles</p>
+
+        
+
+        
+
+    </div>
+
+
+    <script src="csb.js"></script>
+      
+</body>
+</html>
