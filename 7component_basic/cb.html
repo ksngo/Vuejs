@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cb.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <my_button> </my_button>
+        <my_button> </my_button>
+        <my_button> </my_button>
+        
+    </div>
+
+    <br><br><br>
+    <!-- normally without using Vue.-->
+    <div id="app2">
+        <button v-on:click="count_method">You click me {{count}} times.</button>
+        
+    </div>
+    <br><br><br>
+
+
+    <div id="app3">
+        <my_button3> </my_button3>
+        <button v-on:click="count_method">You clicked me {{count}} times </button>
+    </div>
+    
+    
+    <!-----------prop example---------->
+    <!---------prop : ["key" , "title]----->
+    <!--------we can use key and title as property in the tag for 'prop example-->
+
+    
+    <div id="app_prop">
+        <prop_example clip="example of clip" clipper="Example of clipper"> </prop_example>
+        <!-- clip and clipper is made available as property in <prop_example> because of 
+            Vue.component({ prop : [ "clip" , "clipper" ],
+                            template : "<h3> {{clip}} : {{clipper}} </h3>"
+        }) -->
+        
+        <prop_example v-for ="item in my_array" v-bind:clip="item.id" v-bind:clipper="item.desc"></prop_example>
+        <!-- v-bind binds clip to Vue data 
+            Vue({ 
+                data : {
+                    my_array : [
+                    { id : "xxxx" , desc : "xxxxxxx"},
+                    { id : "xxxx" , desc : "xxxxxxx"}
+                    ]
+
+        }}) -->
+
+    </div>
+
+    <!-- prop example for larger objects (item.id, item.desc .....)-->
+    <!-- Just need to v-bind to a single root element-->
+    <!--- Just need to create a single prop : [single_element] -->
+    <!-- Adjust font size  :style="{fontSize: postFontSize+'em'}" -->
+    <div id="app_prop2" :style="{fontSize: postFontSize+'em'}">  
+        <prop_example2 
+            v-for="item in my_array" 
+            v-bind:single_element = "item"  
+            v-on:enlarge_font = "postFontSize +=0.1"
+            v-on:smaller_font = "postFontSize -= $event" 
+            v-on:change_color = "switch_color"
+        >
+            <!-------------- v-on: (custom event) ="(to do function)" -------------->
+            <!-- we can add custom event to v-on: (custom_event)-->
+            <!-- to trigger custom_event , v-on:click ="$emit('custom_event')"-->
+            <!---  In v-on:enlarge_font = "postFontSize +=0.1" , directly place the simple function -->
+            <!--   Alternatively, In v-on:change_color = "switch_color" , switch_color is a function defined in Vue instance methods-->
+            <!--  $event will refers to the 0.5 in cb.js <button v-on:click="$emit('smaller_font' , 0.5)"> Smaller </button>-->
+        </prop_example2>
+    </div>
+    <br><br><br>
+    <!-- -----using v-model on components -->
+
+    <div id="app4">
+        <my_input v-model="searchText"> </my_input>
+        <span> {{searchText}} </span>
+    </div>
+    <br><br><br>
+    
+    <!--------------using slot -->
+    <div id="app5">
+        <alert-box>
+            Something bad happened.
+          </alert-box>
+
+    </div>
+
+    
+
+    
+    <script src="cb.js"></script>
+
+
+</body>
+</html>

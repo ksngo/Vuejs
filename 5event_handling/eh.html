@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <button v-on:click = "counter+=1"> Press me</button>
+        <p> You have clicked {{counter}} times.</p>
+
+        <button v-on:click = "greet"> Greet</button>
+        <p> YOu have greeted {{count}} times. </p>
+
+        <button v-on:click = "say('something wrong?')">Say</button>
+
+        <div></div>
+        <input v-model="input" type="text">
+        <button v-on:click.stop = "reveal">Show message</button>
+        <p> {{message}} </p>
+
+        <!-- event modifier 
+            => v-on:click.once , will only trigger once 
+        -->
+
+        <input v-on:keyup.enter = "on_keyup_enter"> Press enter on your keyboard </input>
+        <p> {{warning}} </p>
+        <!-- keyup 
+            handler will be called if $event.key is equal to "equal"
+        -->
+
+        <input v-on:keyup.page-down = "on_keyup_pgdn"> Press PgDn on your keyboard </input>
+        <p> {{warning2}} </p>
+
+        <!-- keyup 
+            handler will be called if $event.key is equal to "PageDown"
+            keyup.tab,
+            keyup.delete,
+            keyup.esc, keyup.space, keyup.up, keyup.down, keyup.left, keyup.right
+        -->
+
+
+
+
+    </div>
+    
+    
+
+
+    <script src="eh.js"></script>
+</body>
+
+
+
+</html>

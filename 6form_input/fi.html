@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+  <!--------------------------(A) Static value binding------------------------->      
+        <input v-model="message" placeholder="Edit me">
+        <p>  {{message}}</p>
+        <p> Message is {{message}}</p>
+        <br>
+        <!-- (A) message is entered text in input-->
+
+        <input type="checkbox" v-model="checked" id="checkbox"> 
+        <label for="checkbox">{{checked}}</label>
+        <!--I have set checked= boolean in Vue Object's data. 
+            If there is no value property in input tag, 
+            when checkbox is checked, it will switch the checked=boolean in Vue Object's data.(i.e from true to false)
+
+            (1) when there is no value set in input tag for checkbox type , set Vue Object data to checked : boolean
+            (A) checked is either true or false
+        -->
+        <br><br><br>
+
+        <input type="checkbox" v-model="choice" value="KFC">
+        <label> KFC </label>
+        <!-- Vue object data choice will retain input tag's value property value(i.e. KFC) when checkbox is checked
+        
+            (1) when there is value set in input tag for checkbox type, set Vue Object data to choice : []
+            (A) choice is string "KFC" when checked
+            
+            
+        -->
+        <input type="checkbox" v-model="choice" value="McDonald">
+        <label> Mc Donald </label>
+        <input type="checkbox" v-model="choice" value="Hai Di Lao">
+        <label> Hai Di Lao </label>
+        <p> Checked Choice : {{choice}} </p>
+        <br><br><br>
+
+        <input type="radio" v-model="radio_choice" value="choice_1">
+        <label> One </label>
+        <input type="radio" v-model="radio_choice" value="choice_2">
+        <label> Two </label>
+        <input type="radio" v-model="radio_choice" value="choice_3">
+        <label> Three </label>
+        <p> Picked : {{radio_choice}}</p>
+
+        <!-- For radio,
+        
+            (1) when there is value set in input tag for checkbox type, set Vue Object data to radio_choice : ""
+            (A) radio_choice is the value "choice_1" when checked on "choice_1"
+        -->
+        <br><br><br>
+
+        <select v-model = "option_choice">
+            <option> Option 1</option>
+            <option> Option 2 </option>
+            <option> Option 3 </option>
+        </select>
+        <p> Selected : {{option_choice}}</p>
+
+        <!-- For select/option,
+        
+            (1) set Vue Object data to option_choice : ""
+            
+        -->
+        <br><br><br>
+
+
+        <select v-model = "option_choice_multi" multiple>
+            <option> Option 1</option>
+            <option> Option 2 </option>
+            <option> Option 3 </option>
+        </select>
+        <span> Selected : {{option_choice_multi}}</span>
+
+        <!-- For select/option (multiple),
+        
+            (1) set Vue Object data to option_choice : [] or ""
+            
+        -->
+        <br><br><br>
+
+    <!--------- (B) Bind value to a dynamic property on the Vue instance ---------------------> 
+    <!----------              using v-bind                  -->
+        <select v-model = "selected">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{option.text}}
+            </option>
+
+        </select>
+        <span> Selected : {{selected}} </span>
+
+        <br><br><br>
+
+    <!-------------(C) Modifiers v-model.lazy ------------------->
+        <h1> v-model.lazy</h1>
+        <input v-model="wt_test_lazy">
+        <span> {{wt_test_lazy}}</span>
+        <!-- data wt_test_lazy syncs with input with each input event-->
+        <br>
+        <input v-model.lazy="test_lazy">
+        <span> {{test_lazy}}</span>
+        <!-- data test_lazy syncs with input after change event-->
+    </div>
+
+    <!----other modifiers , v-model.number, v-model.trim-->
+
+
+    <script src="./fi.js"></script>
+</body>
+</html>
