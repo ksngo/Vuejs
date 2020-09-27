@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <my-component 
+            my_prop1 ="Global Registration" my_prop2 ="Sir"
+        ></my-component>
+    </div>
+
+    <div id="app2">
+        <my-component
+            my_prop1 ="Global Registartion Try Again" my_prop2 = "Madam"
+        ></my-component>
+    </div>
+
+    <div id="app3">
+        <component-a my_prop1 = "Local Registration" my_prop2 = "testing"></component-a>
+    </div>
+
+    <div id="app4">
+        <my-component 
+            v-bind:my_prop1 = "[{ name : 'ks', class : '2/3' },{name : 'nks', class : '3/3'}]"
+            v-bind:my_prop2 = "post.title"
+        ></my-component>
+    </div>
+
+    <div id="app5">
+        <component-b
+            initial-counter = "Hello World"
+        > I am in slot
+        </component-b>
+    </div>
+
+    <div id="app6">
+        <component-c>
+
+        </component-c>
+    </div>
+
+    <div id="app7">
+        <component-d
+            npa="Non Prop Attribute test"
+        >
+            
+        </component-d>
+    </div>
+
+    <div id="app8">
+        <component-e
+            npa="Non Prop Attribute test"
+        >
+            
+        </component-e>
+    </div>
+
+    <script src="cid.js"></script>
+</body>
+</html>
